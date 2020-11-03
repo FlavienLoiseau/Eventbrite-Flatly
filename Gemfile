@@ -8,6 +8,9 @@ gem 'table_print'
 gem 'letter_opener', :group => :development
 gem 'dotenv-rails'
 
+gem 'devise'
+gem 'devise-bootstrap-views', '~> 1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
