@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
+  belongs_to :admin, class_name: "User"
   has_many :attendances
-  has_many :users, through: :attendances
+  has_many :guests, through: :attendances, source: :guest
   
   validates :start_date, presence: true, if: :future_date
   validates :duration, presence: true, if: :divisible_by_five

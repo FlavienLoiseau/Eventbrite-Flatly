@@ -20,12 +20,12 @@ tp User.all
 
 #Creation Event
 5.times do
-  Event.create(start_date: Faker::Date.forward, duration: rand(1..60)*5, title: Faker::Lorem.sentence(word_count: 5), description: Faker::Lorem.sentence(word_count: 12), price: rand(1..1000), location: Faker::Address.full_address)
+  Event.create(admin: User.all.sample, start_date: Faker::Date.forward, duration: rand(1..60)*5, title: Faker::Lorem.sentence(word_count: 5), description: Faker::Lorem.sentence(word_count: 12), price: rand(1..1000), location: Faker::Address.full_address)
 end
 tp Event.all
 
 #Creation Attendance
 10.times do
-  Attendance.create(user: User.all.sample, event: Event.all.sample)
+  Attendance.create(stripe_customer_id: "", guest: User.all.sample, event: Event.all.sample)
 end
 tp Attendance.all
