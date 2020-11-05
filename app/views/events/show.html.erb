@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1 class="my-5 font-weight-normal text-center"><%= @event.title %></h1>
+
+  <ul class="list-group my-5 text-left">
+    <li class="list-group-item">
+      <b>Organisateur :</b><br>
+      <%= @event.admin.first_name %> <%= @event.admin.last_name %>
+    </li>
+    <li class="list-group-item">
+      <b>Lieu</b><br>
+      <%= @event.location%>
+    </li>
+    <li class="list-group-item">
+      <b>Description :</b><br>
+      <%= @event.description %>
+    </li>
+    <li class="list-group-item">
+      <b>Heure de début</b><br>
+      <%= @event.start_date%>
+    </li>
+    <li class="list-group-item">
+      <b>Heure de fin</b><br>
+      <%= @end_date_time%>
+    </li>
+    <li class="list-group-item">
+      <b>Prix :</b><br>
+      <%= @event.price%> €
+    </li>
+
+    <% if user_signed_in? && @event.admin != current_user%>
+        <%= link_to "S'inscrire à l'événement", '#', class: "nav-link btn btn-outline-success mx-2 my-2" %>
+    <%end%>
+  </ul>
+
+</div>

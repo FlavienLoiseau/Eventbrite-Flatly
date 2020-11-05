@@ -1,18 +1,26 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Voici les évènements à venir</h1>
-  </div>
-</div>
+​<div class="container">
 
- <div class="row justify-content-center">
+  <picture>
+    <img src="https://images.pexels.com/photos/3768222/pexels-photo-3768222.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" class="img-fluid rounded mx-auto d-block" alt="Home Picture">
+  </picture>
+
+  <h1 class="my-4 font-weight-normal text-center">Découvre les évènements à venir</h4>
+
+  <div class="row justify-content-center">
     <% @events.each do |event| %>
       <div class="card m-3" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= event.title %></h5>
-          <p class="card-text">Créé par: <%= event.admin.email %></p>
-          <p class="card-text text-muted"><small>xxx</small></p>
-          <%= link_to "See the full event", event_path(event.id), :class => "btn btn-outline-secondary" %>
+        <div class="card-header text-center">
+          <h5><%= event.title %></h5>
+        </div>
+        <div class="card-body text-sm-left">
+          <ul class="list-unstyled">
+            <li>Administrateur : <%= event.admin.first_name %> <%= event.admin.last_name %></li>
+            <li>Lieu : <%= event.location %></li>
+            <li>Date : <%= event.start_date %></li>
+          </ul>
+          <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-block btn-outline-primary" %>
         </div>
       </div>
     <% end %>
   </div>
+</div>

@@ -1,29 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="header my-4">
+    <h1 class="text-center">Mon profil</h1>
+    <ul class="list-group my-4 text-left">
+      <li class="list-group-item">
+        <b>Prénom : </b><%=@user.first_name%>
+      </li>
+      <li class="list-group-item">
+        <b>Nom : </b><%=@user.last_name%>
+      </li>
+      <li class="list-group-item">
+        <b>Email : </b><%=@user.email%>
+      </li>
+      <li class="list-group-item">
+        <b>Description : </b><%=@user.description%>
+      </li>
+    </ul>
+    <%= link_to "Editer mon profil", edit_user_path(@user), :class => "btn btn-block btn-outline-danger" %>
+  </div>
 
-<p>
-  <strong>Encrypted password:</strong>
-  <%= @user.encrypted_password %>
-</p>
+  <div class="header my-4">
+    <h1 class="text-center">Mes événements créés</h2>
+    <div class="row justify-content-center">
+      <% @events.each do |event| %>
+        <div class="card m-3" style="width: 18rem;">
+          <div class="card-header text-center">
+            <h5><%= event.title %></h5>
+          </div>
+          <div class="card-body text-sm-left">
+            <ul class="list-unstyled">
+              <li>Nombre d'inscrits : </li>
+              <li>Lieu : <%= event.location %></li>
+              <li>Date : <%= event.start_date %></li>
+            </ul>
+            <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-block btn-outline-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
