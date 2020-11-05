@@ -16,7 +16,7 @@
           <ul class="list-unstyled">
             <li>Administrateur : <%= event.admin.first_name %> <%= event.admin.last_name %></li>
             <li>Lieu : <%= event.location %></li>
-            <li>Date : <%= event.start_date %></li>
+            <li>Date : <%= event.start_date.strftime("le %-d/%-m/%Y à %lh%H") %></li>
           </ul>
           <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-block btn-outline-primary" %>
         </div>
