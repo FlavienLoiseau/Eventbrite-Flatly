@@ -7,6 +7,7 @@ gem 'table_print'
 
 gem 'dotenv-rails'
 gem 'devise'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
