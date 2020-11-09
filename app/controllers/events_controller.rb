@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @events = Event.all
@@ -7,7 +7,19 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @end_date_time = (@event.start_date + (@event.duration * 60))
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event.id)
+    else
+      render :edit
+    end
   end
 
   def new
@@ -23,6 +35,11 @@ class EventsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private

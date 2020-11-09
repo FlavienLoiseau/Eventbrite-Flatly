@@ -16,21 +16,22 @@
       <%= @event.description %>
     </li>
     <li class="list-group-item">
-      <b>Heure de début</b><br>
+      <b>Date :</b><br>
       <%= @event.start_date%>
-    </li>
-    <li class="list-group-item">
-      <b>Heure de fin</b><br>
-      <%= @end_date_time%>
     </li>
     <li class="list-group-item">
       <b>Prix :</b><br>
       <%= @event.price%> €
     </li>
-
-    <% if user_signed_in? && @event.admin != current_user%>
-        <%= link_to "S'inscrire à l'événement", '#', class: "nav-link btn btn-outline-success mx-2 my-2" %>
-    <%end%>
   </ul>
-
+  <div class="button my-5">
+    <% if @event.admin == current_user %>
+      <%= link_to "Editer l'évènement", edit_event_path(@event), class: "btn btn-outline-primary" %>
+      <%= link_to "Supprimer l'évènement", event_path(@event), :method => 'DELETE', class: "btn btn-outline-danger ml-3" %>
+    <% elsif @event.guests.select{ |guest| guest == current_user }.count == 0 %>
+      <%= link_to "S'inscrire à l'évènement", new_event_attendance_path(@event), class: "btn btn-outline-primary" %>
+    <% elsif @event.guests.select{ |guest| guest == current_user }.count == 1 %>
+      <%= link_to "Se désinscrire de l'évènement", attendance_path(current_user, @event), :method => 'DELETE', class: "btn btn-outline-danger" %>
+    <% end %>
+  </div>
 </div>

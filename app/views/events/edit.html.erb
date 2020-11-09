@@ -3,7 +3,7 @@
   <div class="row">
     <div class="mx-auto" style="width: 600px;">
       <%= form_for @event, html: { class: "form-signin" } do |f| %>
-        <h1 class="my-4 font-weight-normal text-center">Créer un événement</h1>
+        <h1 class="my-4 font-weight-normal text-center"><%= @event.title %></h1>
         <div class="form-group">
           <%= f.label :title, "Titre de l'événement" %><br>
           <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "entre 5 et 140 caractères" %>
@@ -29,7 +29,7 @@
           <%= f.text_field :location, class: "form-control" %>
         </div>
         <div class="my-4 actions">
-          <%= f.submit "Créer", class: "btn btn-primary btn-lg btn-block" %>
+          <%= f.submit "Mettre à jour", class: "btn btn-primary btn-lg btn-block" %>
         </div>
       <% end %>
     </div>
